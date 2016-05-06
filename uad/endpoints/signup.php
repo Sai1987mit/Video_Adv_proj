@@ -15,6 +15,6 @@
      ));
     */
      
-    
+    echo json_encode($username);
    
 ?>

@@ -24,12 +24,27 @@ app.controller("LoginController", function($scope, $http){
 	    	  
 	    	  $http.post("endpoints/signup.php", data).success(function(response){
 	    		   console.log(response);  
+	    		   localStorage.setItem("user", JSON.stringify({user: response}));
+	    		   
 	    	  }).error(function(error){
 	    		  console.error(error);
-	    	  });
+	    	  });	    	  	        	  
+	      };
+	      
+	      $scope.loginUser = function (){
+	    	  var data = {
+	    			  username: $scope.loginInfo.username,
+	    			  password: $scope.loginInfo.password
+	    			  
+	    	  }
 	    	  
-	      }
-	      
-	      
+	    	  $http.post("endpoints/login.php", data).success(function(response){
+	    		   console.log(response);  
+	    		   localStorage.setItem("user", JSON.stringify({user: response}));
+	    		   
+	    	  }).error(function(error){
+	    		  console.error(error);
+	    	  });	    	  	        	  
+	      };
 	    //Init
 })
